@@ -1,6 +1,7 @@
-source https://api.nuget.org/v3/index.json
+group FSharpLib
 
 storage: none
+source https://api.nuget.org/v3/index.json
 nuget FSharp.Core
 
 group Tests

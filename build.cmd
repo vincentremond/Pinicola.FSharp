@@ -1,9 +1,10 @@
 @ECHO OFF
 
-echo ---- dotnet tool restore -------------------------------------------- 
+echo ---- dotnet tool restore ----------------------------------------------------------------
 dotnet tool restore
-echo ---- dotnet paket restore ------------------------------------------- 
+echo ---- dotnet paket restore ---------------------------------------------------------------- 
 dotnet paket restore
-echo ---- dotnet run --project .\.build\build\build.fsproj --------------- 
-dotnet run --project .\.build\build\build.fsproj
-echo --------------------------------------------------------------------- 
+echo ---- dotnet run --project .\Pinicola.Build.Run\Pinicola.Build.Run.fsproj ----------------- 
+dotnet run --project .\Pinicola.Build.Run\Pinicola.Build.Run.fsproj --configuration Debug
+echo ------------------------------------------------------------------------------------------
+

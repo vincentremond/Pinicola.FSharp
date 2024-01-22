@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinicola.Build", "Pinicola.Build\Pinicola.Build.fsproj", "{FDAE5399-41D2-48B3-AA66-6907973887EE}"
+EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp", "Pinicola.FSharp\Pinicola.FSharp.fsproj", "{0C299B90-B270-4DAA-AB7A-517E25DC5E05}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp.Tests", "Pinicola.FSharp.Tests\Pinicola.FSharp.Tests.fsproj", "{66F1D397-3EE7-4026-8227-764E68B220E9}"
@@ -17,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{0F1392
 		build.cmd = build.cmd
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "build", ".build\build\build.fsproj", "{FDAE5399-41D2-48B3-AA66-6907973887EE}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.Build.Run", "Pinicola.Build.Run\Pinicola.Build.Run.fsproj", "{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,8 +42,11 @@ Global
 		{FDAE5399-41D2-48B3-AA66-6907973887EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDAE5399-41D2-48B3-AA66-6907973887EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDAE5399-41D2-48B3-AA66-6907973887EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FDAE5399-41D2-48B3-AA66-6907973887EE} = {0F139206-F819-4CA3-98E7-1A950E6DF147}
 	EndGlobalSection
 EndGlobal
