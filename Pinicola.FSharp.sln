@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{0F1392
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.Build.Run", "Pinicola.Build.Run\Pinicola.Build.Run.fsproj", "{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp.SpectreConsole", "Pinicola.FSharp.SpectreConsole\Pinicola.FSharp.SpectreConsole.fsproj", "{C63F6FD3-B2F6-41A7-B2DE-3861302B435B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2C8C9B7-409D-4940-80A2-ECBA0FC7F0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63F6FD3-B2F6-41A7-B2DE-3861302B435B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63F6FD3-B2F6-41A7-B2DE-3861302B435B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63F6FD3-B2F6-41A7-B2DE-3861302B435B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63F6FD3-B2F6-41A7-B2DE-3861302B435B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

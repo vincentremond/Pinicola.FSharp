@@ -2,13 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <WarningsAsErrors>FS0025</WarningsAsErrors>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="paket.references" />
     <Content Include="paket.template" />
-    <Compile Include="Fargo.fs" />
+    <Compile Include="SelectionPrompt.fs" />
+    <Compile Include="AnsiConsole.fs" />
+    <Compile Include="Status.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

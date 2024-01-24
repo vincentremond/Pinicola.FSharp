@@ -1,2 +1,3 @@
 group FSharpLib
 FSharp.Core
+Fargo.CmdLine

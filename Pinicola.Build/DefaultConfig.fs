@@ -13,6 +13,16 @@ open Fake.Tools.Git
 
 module DefaultConfig =
 
+    let parseTag line =
+        let tagRegex = Regex(@"^v(?<Tag>\d+\.\d+\.\d+)$")
+
+        let m = tagRegex.Match(line)
+
+        if not m.Success then
+            failwith $"Unexpected git log output %A{line}"
+        else
+            m.Groups["Tag"].Value |> SemVer.parse
+
     [<RequireQualifiedAccess>]
     module Result =
         let get r =
@@ -85,36 +95,17 @@ module DefaultConfig =
                     | s when String.isNotNullOrEmpty s && Directory.Exists s -> s
                     | _ -> "./nuget"
 
-                // 2024-01-08 08:05:46 +0100  (HEAD -> main, tag: v0.0.1)
-                let tagRegex = Regex(@"^(?<Date>.+)  \(.*tag: v(?<Tag>\d+\.\d+\.\d+)\)$")
-
                 let latestTagVersion =
-                    CommandHelper.runGitCommand "." "log --tags --simplify-by-decoration --pretty=\"format:%ci %d\""
+                    CommandHelper.runGitCommand "." "tag --list"
                     |> Result.get
-                    |> List.map (fun line ->
-                        let m = tagRegex.Match(line)
-
-                        if not m.Success then
-                            failwith $"Unexpected git log output %A{line}"
-                        else
-                            let date = DateTimeOffset.Parse(m.Groups["Date"].Value)
-                            let versionTag = m.Groups["Tag"].Value |> SemVer.parse
-
-                            {|
-                                Version = versionTag
-                                Date = date
-                            |}
-                    )
-                    |> List.sortByDescending (_.Version)
+                    |> List.map parseTag
+                    |> List.sortDescending
                     |> List.head
 
-                let ageSinceLastTag =
-                    (DateTimeOffset.Now - latestTagVersion.Date).TotalMinutes
-                    |> int
-                    |> (_.ToString("X10"))
+                let timestamp = DateTimeOffset.Now.ToString("yyyyMMddHHmmss")
 
                 let tempVersion =
-                    SemVer.parse $"%s{string latestTagVersion.Version.AsString}-%s{ageSinceLastTag}"
+                    SemVer.parse $"%s{string latestTagVersion.AsString}-%s{timestamp}"
                     |> (_.AsString)
 
                 printfn $"Publishing version %s{tempVersion}"
