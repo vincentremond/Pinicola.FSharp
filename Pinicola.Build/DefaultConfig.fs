@@ -95,12 +95,16 @@ module DefaultConfig =
                     | s when String.isNotNullOrEmpty s && Directory.Exists s -> s
                     | _ -> "./nuget"
 
-                let latestTagVersion =
+                let tags =
                     CommandHelper.runGitCommand "." "tag --list"
                     |> Result.get
                     |> List.map parseTag
                     |> List.sortDescending
-                    |> List.head
+
+                let latestTagVersion =
+                    match tags with
+                    | [] -> failwith "No tags found"
+                    | tag :: _ -> tag
 
                 let timestamp = DateTimeOffset.Now.ToString("yyyyMMddHHmmss")
 
