@@ -9,6 +9,8 @@
     <Compile Include="SelectionPrompt.fs" />
     <Compile Include="AnsiConsole.fs" />
     <Compile Include="Status.fs" />
+    <Compile Include="Rule.fs" />
+    <Compile Include="Style.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
