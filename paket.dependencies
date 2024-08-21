@@ -1,12 +1,12 @@
 source https://www.nuget.org/api/v2
 
-nuget Spectre.Console
 group FSharpLib
 
 storage: none
 source https://api.nuget.org/v3/index.json
-nuget Fargo.CmdLine
 nuget FSharp.Core
+nuget Fargo.CmdLine
+nuget Spectre.Console
 
 group Tests
 

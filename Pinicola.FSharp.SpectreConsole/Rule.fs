@@ -4,8 +4,18 @@
 module Rule =
     open Spectre.Console
 
-    let init () = Rule()
+    let initBlank () = Rule()
 
-    let setStyle style (rule: Rule) =
+    let initWithTitle title = Rule(title)
+
+    let withTitle title (rule: Rule) =
+        rule.Title <- title
+        rule
+
+    let withStyle style (rule: Rule) =
         rule.Style <- style
+        rule
+
+    let withJustify (justification: Justify) (rule: Rule) =
+        rule.Justification <- justification
         rule

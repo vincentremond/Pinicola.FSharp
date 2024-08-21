@@ -4,7 +4,7 @@ open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module SelectionPrompt =
-    let setTitle (title: string) (prompt: SelectionPrompt<'a>) =
+    let withTitle (title: string) (prompt: SelectionPrompt<'a>) =
         prompt.Title <- title
         prompt
 
