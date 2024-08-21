@@ -1,6 +1,7 @@
 ﻿namespace Pinicola.FSharp.SpectreConsole
 
 open Spectre.Console
+open Spectre.Console.Rendering
 
 [<RequireQualifiedAccess>]
 module AnsiConsole =
@@ -10,3 +11,4 @@ module AnsiConsole =
     let markupLine = AnsiConsole.MarkupLine
     let markupInterpolated = AnsiConsole.MarkupInterpolated
     let markupLineInterpolated = AnsiConsole.MarkupLineInterpolated
+    let write: IRenderable -> unit = AnsiConsole.Write

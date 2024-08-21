@@ -1,1 +1,3 @@
+group FSharpLib
 Spectre.Console
+FSharp.Core
