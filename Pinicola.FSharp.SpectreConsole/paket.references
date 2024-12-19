@@ -1,3 +1,4 @@
 group FSharpLib
 Spectre.Console
 FSharp.Core
+Microsoft.SourceLink.GitHub

@@ -6,7 +6,12 @@ module Style =
     open Spectre.Console
 
     let init foreground background decoration link =
-        Style(foreground |> Option.toNullable, background |> Option.toNullable, decoration |> Option.toNullable, link |> Option.toObj)
+        Style(
+            foreground |> Option.toNullable,
+            background |> Option.toNullable,
+            decoration |> Option.toNullable,
+            link |> Option.toObj
+        )
 
 type StyleBuilder = {
     Foreground: Spectre.Console.Color option
@@ -21,7 +26,7 @@ type StyleBuilder = {
         Decoration = None
         Link = None
     }
-    
+
     static member withForeground color this = { this with Foreground = Some color }
     static member withBackground color this = { this with Background = Some color }
     static member withDecoration decoration this = { this with Decoration = Some decoration }
