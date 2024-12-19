@@ -12,3 +12,5 @@ module SelectionPrompt =
         choices |> Array.ofSeq |> prompt.AddChoices
 
     let init () = SelectionPrompt<'a>()
+
+    let useConverter (converter: 'a -> string) (prompt: SelectionPrompt<'a>) = prompt.UseConverter(converter)
