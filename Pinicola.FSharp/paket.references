@@ -1,3 +1,4 @@
 group FSharpLib
 FSharp.Core
 Fargo.CmdLine
+Microsoft.SourceLink.GitHub

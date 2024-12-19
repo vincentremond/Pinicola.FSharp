@@ -1,4 +1,4 @@
-source https://www.nuget.org/api/v2
+source https://api.nuget.org/v3/index.json
 
 group FSharpLib
 
@@ -6,6 +6,7 @@ storage: none
 source https://api.nuget.org/v3/index.json
 nuget FSharp.Core
 nuget Fargo.CmdLine
+nuget Microsoft.SourceLink.GitHub
 nuget Spectre.Console
 
 group Tests
