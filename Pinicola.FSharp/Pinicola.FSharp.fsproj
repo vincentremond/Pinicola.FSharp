@@ -13,6 +13,8 @@
     <Compile Include="Regex.fs" />
     <Compile Include="String.fs" />
     <Compile Include="Fargo.fs" />
+    <Compile Include="File.fs" />
+    <Compile Include="Tuple2.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
