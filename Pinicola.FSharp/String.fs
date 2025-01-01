@@ -5,7 +5,7 @@ open System
 [<AutoOpen>]
 module StringActivePatterns =
 
-    let (|Contains|_|) comparisonType (s: string) (sub: string) =
+    let (|Contains|_|) comparisonType (sub: string) (s: string) =
         if s.Contains(sub, comparisonType) then Some() else None
 
 [<RequireQualifiedAccess>]
