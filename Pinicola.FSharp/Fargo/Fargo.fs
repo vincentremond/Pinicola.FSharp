@@ -1,4 +1,4 @@
-﻿namespace Pinicola.FSharp
+﻿namespace Pinicola.FSharp.Fargo
 
 open System
 open System.Threading.Tasks
