@@ -16,3 +16,10 @@ module List =
 
     let mapSnd f = List.map (fun (a, b) -> (a, f b))
     let mapFst f = List.map (fun (a, b) -> (f a, b))
+
+    let chooseSnd f =
+        List.choose (fun (a, b) ->
+            match f b with
+            | Some b' -> Some(a, b')
+            | None -> None
+        )
