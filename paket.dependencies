@@ -8,6 +8,7 @@ nuget FSharp.Core
 nuget Fargo.CmdLine
 nuget Microsoft.SourceLink.GitHub
 nuget Spectre.Console
+nuget FParsec
 
 group Tests
 

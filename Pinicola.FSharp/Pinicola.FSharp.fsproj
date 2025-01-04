@@ -16,6 +16,8 @@
     <Compile Include="IO\File.fs" />
     <Compile Include="RegularExpressions\Regex.fs" />
     <Compile Include="Fargo\FargoCmdLine.fs" />
+    <Compile Include="FParsec\FParsecHelper.fs" />
+    <Compile Include="Map.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
