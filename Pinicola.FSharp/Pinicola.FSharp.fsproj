@@ -8,16 +8,17 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Content Include="paket.template" />
-    <Compile Include="List.fs" />
-    <Compile Include="String.fs" />
-    <Compile Include="Tuple2.fs" />
-    <Compile Include="Map.fs" />
     <Compile Include="IO\Directory.fs" />
     <Compile Include="IO\Path.fs" />
     <Compile Include="IO\File.fs" />
     <Compile Include="RegularExpressions\Regex.fs" />
     <Compile Include="Fargo\FargoCmdLine.fs" />
     <Compile Include="FParsec\FParsecHelper.fs" />
+    <Compile Include="List.fs" />
+    <Compile Include="Map.fs" />
+    <Compile Include="Seq.fs" />
+    <Compile Include="String.fs" />
+    <Compile Include="Tuple2.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
