@@ -15,6 +15,7 @@
     <Compile Include="Rule.fs" />
     <Compile Include="Style.fs" />
     <Compile Include="Markup.fs" />
+    <Compile Include="Table.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
