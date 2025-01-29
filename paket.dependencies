@@ -4,6 +4,7 @@ group FSharpLib
 
 storage: none
 source https://api.nuget.org/v3/index.json
+nuget CsvHelper
 nuget FSharp.Core
 nuget Fargo.CmdLine
 nuget Microsoft.SourceLink.GitHub
