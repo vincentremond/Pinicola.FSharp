@@ -24,7 +24,11 @@ module List =
             | None -> None
         )
 
-    let groupByFst s = List.groupBy fst s |> List.map (fun (a, b) -> a, List.map snd b)
-    let groupBySnd s = List.groupBy snd s |> List.map (fun (a, b) -> a, List.map fst b)
+    let groupByFst s =
+        List.groupBy fst s |> List.map (fun (a, b) -> a, List.map snd b)
+
+    let groupBySnd s =
+        List.groupBy snd s |> List.map (fun (a, b) -> a, List.map fst b)
+
     let mapTupleFst f = List.map (fun a -> (f a, a))
     let mapTupleSnd f = List.map (fun a -> (a, f a))

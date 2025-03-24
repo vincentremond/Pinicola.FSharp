@@ -53,7 +53,7 @@ module DefaultConfig =
         Target.create
             "Clean"
             (fun _ ->
-                !! "**/*.fsproj" -- ".build/**"
+                !!"**/*.fsproj" -- ".build/**"
                 |> Seq.iter (fun fsproj ->
                     let command = "clean"
 
@@ -75,7 +75,7 @@ module DefaultConfig =
         Target.create
             "Build"
             (fun _ ->
-                !! "**/paket.template"
+                !!"**/paket.template"
                 |> Seq.iter (fun template ->
                     let projectDirectory = template |> FileInfo |> (_.DirectoryName)
                     let projectFile = projectDirectory |> Directory.findFirstMatchingFile "*.fsproj"
