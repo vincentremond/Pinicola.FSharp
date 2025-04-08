@@ -9,12 +9,14 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Content Include="paket.template" />
-    <Compile Include="SelectionPrompt.fs" />
     <Compile Include="AnsiConsole.fs" />
-    <Compile Include="Status.fs" />
-    <Compile Include="Rule.fs" />
-    <Compile Include="Style.fs" />
     <Compile Include="Markup.fs" />
+    <Compile Include="Progress.fs" />
+    <Compile Include="ProgressTask.fs" />
+    <Compile Include="Rule.fs" />
+    <Compile Include="SelectionPrompt.fs" />
+    <Compile Include="Status.fs" />
+    <Compile Include="Style.fs" />
     <Compile Include="Table.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

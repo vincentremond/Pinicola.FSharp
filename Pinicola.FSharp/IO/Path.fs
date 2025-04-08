@@ -1,4 +1,4 @@
-﻿namespace Pinicola.FSharp
+﻿namespace Pinicola.FSharp.IO
 
 open System.IO
 
