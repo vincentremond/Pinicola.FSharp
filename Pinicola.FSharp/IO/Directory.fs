@@ -6,7 +6,7 @@ open System.IO
 module Directory =
 
     let exists path = Directory.Exists(path)
-    
+
     let findRelativeParent directoryName =
         let rec findRelativeParent' (current: DirectoryInfo) =
             if current.Parent = null then
@@ -18,3 +18,7 @@ module Directory =
 
         let currentDirectory = Directory.GetCurrentDirectory() |> DirectoryInfo
         findRelativeParent' currentDirectory
+
+    let ensureExists path =
+        if not (Directory.Exists(path)) then
+            Directory.CreateDirectory(path) |> ignore
