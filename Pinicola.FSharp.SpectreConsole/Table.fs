@@ -12,14 +12,18 @@ module Table =
         table.AddColumns(columns |> List.toArray)
 
     let addRow (row: string list) (table: Table) = table.AddRow(row |> List.toArray)
-    
-    let border b (table: Table) =
+
+    let withBorder b (table: Table) =
         table.Border <- b
         table
-        
-    let showHeaders (show: bool) (table: Table) =
+
+    let withShowHeaders (show: bool) (table: Table) =
         table.ShowHeaders <- show
         table
-        
+
+    let withWidth (width: int) (table: Table) =
+        table.Width <- width
+        table
+
     let updateCell (row: int) (column: int) (renderable: IRenderable) (table: Table) =
         table.UpdateCell(row, column, renderable) |> ignore

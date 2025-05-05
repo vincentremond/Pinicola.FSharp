@@ -19,6 +19,8 @@
     <Compile Include="Style.fs" />
     <Compile Include="Table.fs" />
     <Compile Include="LiveDisplay.fs" />
+    <Compile Include="Panel.fs" />
+    <Compile Include="PanelHeader.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
