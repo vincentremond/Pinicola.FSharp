@@ -12,4 +12,7 @@ module AnsiConsole =
     let markupInterpolated = AnsiConsole.MarkupInterpolated
     let markupLineInterpolated = AnsiConsole.MarkupLineInterpolated
     let write: IRenderable -> unit = AnsiConsole.Write
+    let writeLine: string -> unit = AnsiConsole.WriteLine
     let clear = AnsiConsole.Clear
+    let live = AnsiConsole.Live
+    let confirm = AnsiConsole.Confirm

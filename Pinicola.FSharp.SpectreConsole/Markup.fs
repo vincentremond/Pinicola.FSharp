@@ -7,3 +7,4 @@ module Markup =
 
     let escape = Markup.Escape
     let remove = Markup.Remove
+    let fromInterpolated = Markup.FromInterpolated
