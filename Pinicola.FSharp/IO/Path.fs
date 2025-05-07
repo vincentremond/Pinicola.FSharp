@@ -12,6 +12,14 @@ module PathOperators =
 module Path =
     let getFullPath path = Path.GetFullPath path
 
+    let tryFindFileInLocations fileName locations =
+
+        locations
+        |> List.tryPick (fun location ->
+            let fullPath = location </> fileName
+            if File.Exists(fullPath) then Some fullPath else None
+        )
+
     let tryFindInPathEnvVar fileName =
         if File.Exists(fileName) then
             Some(Path.GetFullPath(fileName))
