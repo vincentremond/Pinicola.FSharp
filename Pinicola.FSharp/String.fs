@@ -43,3 +43,6 @@ module String =
     let trimStartChar (c: char) (s: string) = s.TrimStart(c)
 
     let toLower (s: string) = s.ToLower()
+    
+    let replace (oldValue: string) (newValue: string) (s: string) =
+        s.Replace(oldValue, newValue)
