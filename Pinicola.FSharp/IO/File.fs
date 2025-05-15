@@ -6,3 +6,4 @@ open System.IO
 module File =
 
     let writeAllText path (text: string) = File.WriteAllText(path, text)
+    let readAllText path = File.ReadAllText(path)
