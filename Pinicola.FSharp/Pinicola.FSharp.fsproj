@@ -21,6 +21,7 @@
     <Compile Include="String.fs" />
     <Compile Include="Tuple2.fs" />
     <Compile Include="Option.fs" />
+    <Compile Include="ComputationExpressions.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
