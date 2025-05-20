@@ -19,3 +19,11 @@ module Directory =
     let ensureExists path =
         if not (Directory.Exists(path)) then
             Directory.CreateDirectory(path) |> ignore
+
+    let getAllDirectories path =
+        Directory.GetDirectories(path)
+        |> Array.map DirectoryInfo
+
+    let getDirectories pattern path =
+        Directory.GetDirectories(path, pattern)
+        |> Array.map DirectoryInfo
