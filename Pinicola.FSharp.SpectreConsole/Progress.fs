@@ -1,5 +1,6 @@
 ﻿namespace Pinicola.FSharp.SpectreConsole
 
+open System.Threading.Tasks
 open Spectre.Console
 
 [<RequireQualifiedAccess>]
@@ -19,7 +20,40 @@ module Progress =
         let ansiConsole = AnsiConsole.Console
         Progress(ansiConsole)
 
-    let start (fn: ProgressContext -> unit) (p: Progress) = p.Start(fn)
+    let start (fn: ProgressContext -> 'a) (p: Progress) = p.Start(fn)
+    let startAsync (fn: ProgressContext -> Task<'a>) (p: Progress) = p.StartAsync(fn)
+
+    let startAsync' fn p =
+        startAsync fn p |> Async.AwaitTask |> Async.RunSynchronously
+
+    let runTasks list getDescription run (p: Progress) =
+        p.StartAsync(fun progressContext ->
+            task {
+                let progressTasks =
+                    list
+                    |> List.map (fun item ->
+                        let description = getDescription item
+                        progressContext.AddTask(description), item
+                    )
+
+                let runningTasks =
+                    progressTasks
+                    |> List.map (fun (t, item) ->
+                        t.StartTask()
+
+                        task {
+                            let result = run item
+                            t.StopTask()
+                            return result
+                        }
+                    )
+
+                let! results = Task.WhenAll(runningTasks)
+                return results |> List.ofArray
+            }
+        )
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
 
     let withHideCompleted v (p: Progress) =
         p.HideCompleted <- v
