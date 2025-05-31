@@ -11,23 +11,23 @@ module StringActivePatterns =
 [<RequireQualifiedAccess>]
 module String =
 
-    let private equalsWithComparison (comparison: StringComparison) (s1: string) (s2: string) =
-        System.String.Equals(s1, s2, comparison)
+    let private equals (comparison: StringComparison) (s1: string) (s2: string) =
+        String.Equals(s1, s2, comparison)
 
     let equalsOrdinalIgnoreCase =
-        equalsWithComparison StringComparison.OrdinalIgnoreCase
+        equals StringComparison.OrdinalIgnoreCase
 
-    let equalsOrdinal = equalsWithComparison StringComparison.Ordinal
+    let equalsOrdinal = equals StringComparison.Ordinal
 
     let equalsCurrentCultureIgnoreCase =
-        equalsWithComparison StringComparison.CurrentCultureIgnoreCase
+        equals StringComparison.CurrentCultureIgnoreCase
 
-    let equalsCurrentCulture = equalsWithComparison StringComparison.CurrentCulture
+    let equalsCurrentCulture = equals StringComparison.CurrentCulture
 
     let equalsInvariantCultureIgnoreCase =
-        equalsWithComparison StringComparison.InvariantCultureIgnoreCase
+        equals StringComparison.InvariantCultureIgnoreCase
 
-    let equalsInvariantCulture = equalsWithComparison StringComparison.InvariantCulture
+    let equalsInvariantCulture = equals StringComparison.InvariantCulture
 
     let split (separator: char) (s: string) = s.Split(separator) |> List.ofArray
 
@@ -47,3 +47,10 @@ module String =
     let replace (oldValue: string) (newValue: string) (s: string) = s.Replace(oldValue, newValue)
 
     let splitWithOptions (separator: string) options (s: string) = s.Split(separator, options)
+
+    let private startsWith stringComparison (str: string) (value: string) = str.StartsWith(value, stringComparison)
+
+    let startsWithCurrentCultureIgnoreCase =
+        startsWith StringComparison.CurrentCultureIgnoreCase
+
+    let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
