@@ -3,6 +3,12 @@
 [<RequireQualifiedAccess>]
 module List =
 
+    [<RequireQualifiedAccess>]
+    type TryPickExactlyOneResult<'a> =
+        | ExactlyOne of 'a
+        | MoreThanOne of 'a list
+        | None
+
     let tryMapAll mapper list =
         let rec loop acc =
             function
@@ -32,3 +38,11 @@ module List =
 
     let mapTupleFst f = List.map (fun a -> (f a, a))
     let mapTupleSnd f = List.map (fun a -> (a, f a))
+
+    let tryPickExactlyOne f list =
+        let result = List.choose f list
+
+        match result with
+        | [ x ] -> TryPickExactlyOneResult.ExactlyOne x
+        | [] -> TryPickExactlyOneResult.None
+        | xs -> TryPickExactlyOneResult.MoreThanOne xs

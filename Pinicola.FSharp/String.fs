@@ -54,3 +54,6 @@ module String =
         startsWith StringComparison.CurrentCultureIgnoreCase
 
     let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
+
+    let concatC (separator: char) (strings: seq<string>) =
+        String.Join(separator, strings)
