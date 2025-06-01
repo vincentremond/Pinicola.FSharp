@@ -23,6 +23,7 @@
     <Compile Include="Option.fs" />
     <Compile Include="ComputationExpressions.fs" />
     <Compile Include="FireStarter\RunProcess.fs" />
+    <Compile Include="Try.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

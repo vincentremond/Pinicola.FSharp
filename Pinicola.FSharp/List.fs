@@ -46,3 +46,11 @@ module List =
         | [ x ] -> TryPickExactlyOneResult.ExactlyOne x
         | [] -> TryPickExactlyOneResult.None
         | xs -> TryPickExactlyOneResult.MoreThanOne xs
+
+    let ofType<'t> (list: 'a list) =
+        list
+        |> List.choose (fun x ->
+            match box x with
+            | :? 't as t -> Some t
+            | _ -> None
+        )
