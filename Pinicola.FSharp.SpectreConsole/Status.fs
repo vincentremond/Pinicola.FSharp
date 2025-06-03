@@ -1,6 +1,5 @@
 ﻿namespace Pinicola.FSharp.SpectreConsole
 
-open System
 open System.Threading.Tasks
 open Spectre.Console
 

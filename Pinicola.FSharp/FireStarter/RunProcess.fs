@@ -1,7 +1,6 @@
 ﻿namespace Pinicola.FSharp.FireStarter
 
 open System.Diagnostics
-open System.Linq
 
 type RunProcessArgs = {
     Executable: string
