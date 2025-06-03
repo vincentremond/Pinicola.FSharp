@@ -25,6 +25,7 @@
     <Compile Include="FireStarter\RunProcess.fs" />
     <Compile Include="Try.fs" />
     <Compile Include="Array.fs" />
+    <Compile Include="Enum.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
