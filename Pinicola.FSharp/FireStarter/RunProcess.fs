@@ -1,6 +1,7 @@
 ﻿namespace Pinicola.FSharp.FireStarter
 
 open System.Diagnostics
+open System.Linq
 
 type RunProcessArgs = {
     Executable: string
@@ -49,6 +50,8 @@ module RunProcess =
         p.Start() |> expect true "Failed to start process"
         p.WaitForExit()
         p.ExitCode |> expect 0 $"Process exited with code {p.ExitCode}"
+
+    let startAndForget = startProcess >> ignore
 
     let getOutput args =
         let fixedArgs = { args with RedirectStandardOutput = true }
