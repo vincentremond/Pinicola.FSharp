@@ -21,9 +21,7 @@ module Directory =
             Directory.CreateDirectory(path) |> ignore
 
     let getAllDirectories path =
-        Directory.GetDirectories(path)
-        |> Array.map DirectoryInfo
+        Directory.GetDirectories(path) |> Array.map DirectoryInfo
 
     let getDirectories pattern path =
-        Directory.GetDirectories(path, pattern)
-        |> Array.map DirectoryInfo
+        Directory.GetDirectories(path, pattern) |> Array.map DirectoryInfo

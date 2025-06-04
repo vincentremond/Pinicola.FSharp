@@ -56,7 +56,7 @@ module List =
         )
 
     let trySingle f list =
-        match list |>  List.filter f with
+        match list |> List.filter f with
         | [] -> None
         | [ x ] -> Some x
         | xs -> failwithf $"Expected exactly one element, but found %d{List.length xs}"

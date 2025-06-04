@@ -11,11 +11,9 @@ module StringActivePatterns =
 [<RequireQualifiedAccess>]
 module String =
 
-    let private equals (comparison: StringComparison) (s1: string) (s2: string) =
-        String.Equals(s1, s2, comparison)
+    let private equals (comparison: StringComparison) (s1: string) (s2: string) = String.Equals(s1, s2, comparison)
 
-    let equalsOrdinalIgnoreCase =
-        equals StringComparison.OrdinalIgnoreCase
+    let equalsOrdinalIgnoreCase = equals StringComparison.OrdinalIgnoreCase
 
     let equalsOrdinal = equals StringComparison.Ordinal
 
@@ -55,5 +53,4 @@ module String =
 
     let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
 
-    let concatC (separator: char) (strings: seq<string>) =
-        String.Join(separator, strings)
+    let concatC (separator: char) (strings: seq<string>) = String.Join(separator, strings)

@@ -27,7 +27,10 @@ module Path =
             let pathEnvVar = Environment.GetEnvironmentVariable("PATH")
 
             let split =
-                pathEnvVar.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries)
+                pathEnvVar.Split(
+                    Path.PathSeparator,
+                    StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries
+                )
 
             split
             |> Array.tryPick (fun path ->
