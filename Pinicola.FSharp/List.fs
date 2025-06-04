@@ -60,3 +60,8 @@ module List =
         | [] -> None
         | [ x ] -> Some x
         | xs -> failwithf $"Expected exactly one element, but found %d{List.length xs}"
+
+    let any list =
+        match list with
+        | [] -> false
+        | _ -> true

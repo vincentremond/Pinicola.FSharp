@@ -25,3 +25,6 @@ module Directory =
 
     let getDirectories pattern path =
         Directory.GetDirectories(path, pattern) |> Array.map DirectoryInfo
+
+    let isSymlink (directory: DirectoryInfo) =
+        directory.Attributes.HasFlag(FileAttributes.ReparsePoint)
