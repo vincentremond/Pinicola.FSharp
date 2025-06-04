@@ -14,3 +14,4 @@ module RegexPatterns =
 module Regex =
 
     let isMatch (i: string) (r: Regex) = r.IsMatch(i)
+    let isMatch' (pattern: string) (i: string) = Regex.IsMatch(i, pattern)
