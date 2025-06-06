@@ -8,6 +8,12 @@ module PathOperators =
 
     let (</>) (path1: string) (path2: string) = Path.Join(path1, path2)
 
+    let (<?//>) (path1: DirectoryInfo) (path2: string) =
+        Path.Join(path1.FullName, path2) |> DirectoryInfo
+
+    let (<?/>) (path1: DirectoryInfo) (path2: string) =
+        Path.Join(path1.FullName, path2) |> FileInfo
+
 [<RequireQualifiedAccess>]
 module Path =
     let getFullPath path = Path.GetFullPath path
