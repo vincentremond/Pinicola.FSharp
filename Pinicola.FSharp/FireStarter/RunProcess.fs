@@ -1,6 +1,7 @@
 ﻿namespace Pinicola.FSharp.FireStarter
 
 open System.Diagnostics
+open Pinicola.FSharp.IO
 
 type RunProcessArgs = {
     Executable: string
@@ -20,6 +21,17 @@ type RunProcessArgs = {
         UseShellExecute = RunProcessArgs.defaultUseShellExecute
         WorkingDirectory = None
     }
+
+    static member fromExecutableInDirectory executable dir args =
+        let exeFullPath = dir </> executable
+
+        {
+            Executable = exeFullPath
+            Arguments = args
+            CaptureStandardOutput = RunProcessArgs.defaultCaptureStandardOutput
+            UseShellExecute = RunProcessArgs.defaultUseShellExecute
+            WorkingDirectory = Some dir
+        }
 
     static member fromGlobalExeAndWorkingDirectory executable workingDir = {
         Executable = executable
