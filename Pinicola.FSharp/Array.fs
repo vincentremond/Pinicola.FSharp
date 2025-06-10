@@ -23,3 +23,13 @@ module Array =
             | None, Some r -> RightOnly r
             | None, None -> failwith "This should never happen"
         )
+
+    let iteri' f seed (arr: 'a array) =
+        arr
+        |> Array.fold
+            (fun (index, userState) item ->
+                let newUserState = f index userState item
+                (index + 1, newUserState)
+            )
+            (0, seed)
+        |> ignore
