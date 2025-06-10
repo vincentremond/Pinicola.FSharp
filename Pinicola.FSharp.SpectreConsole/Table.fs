@@ -12,6 +12,7 @@ module Table =
         table.AddColumns(columns |> List.toArray)
 
     let addRow (row: string list) (table: Table) = table.AddRow(row |> List.toArray)
+    let removeRow index (table: Table) = table.RemoveRow(index)
 
     let withBorder b (table: Table) =
         table.Border <- b
