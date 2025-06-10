@@ -7,14 +7,14 @@ open Spectre.Console
 module Progress =
 
     module Columns =
-        let downloaded = DownloadedColumn()
-        let elapsedTime = ElapsedTimeColumn()
-        let percentage = PercentageColumn()
-        let progressBar = ProgressBarColumn()
-        let spinner = SpinnerColumn()
-        let remainingTime = RemainingTimeColumn()
-        let taskDescription = TaskDescriptionColumn()
-        let transferSpeed = TransferSpeedColumn()
+        let downloaded () = DownloadedColumn()
+        let elapsedTime () = ElapsedTimeColumn()
+        let percentage () = PercentageColumn()
+        let progressBar () = ProgressBarColumn()
+        let spinner () = SpinnerColumn()
+        let remainingTime () = RemainingTimeColumn()
+        let taskDescription () = TaskDescriptionColumn()
+        let transferSpeed () = TransferSpeedColumn()
 
     let init () =
         let ansiConsole = AnsiConsole.Console

@@ -47,14 +47,6 @@ module List =
         | [] -> TryPickExactlyOneResult.None
         | xs -> TryPickExactlyOneResult.MoreThanOne xs
 
-    let ofType<'t> (list: 'a list) =
-        list
-        |> List.choose (fun x ->
-            match box x with
-            | :? 't as t -> Some t
-            | _ -> None
-        )
-
     let trySingle f list =
         match list |> List.filter f with
         | [] -> None
@@ -65,3 +57,16 @@ module List =
         match list with
         | [] -> false
         | _ -> true
+
+    let iterTaskResult f list =
+        let rec loop acc =
+            task {
+                match acc with
+                | [] -> return Ok()
+                | x :: xs ->
+                    match! f x with
+                    | Ok() -> return! loop xs
+                    | Error e -> return Error e
+            }
+
+        loop list

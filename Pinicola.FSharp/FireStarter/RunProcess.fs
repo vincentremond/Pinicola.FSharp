@@ -7,19 +7,25 @@ type RunProcessArgs = {
     Executable: string
     Arguments: string list
     CaptureStandardOutput: bool
+    CaptureStandardError: bool
     UseShellExecute: bool
     WorkingDirectory: string option
+    CreateNoWindow: bool
 } with
 
     static member defaultCaptureStandardOutput = true
+    static member defaultCaptureStandardError = true
     static member defaultUseShellExecute = false
+    static member defaultCreateNoWindow = true
 
     static member fromExecutableAndArgs executable args = {
         Executable = executable
         Arguments = args
         CaptureStandardOutput = RunProcessArgs.defaultCaptureStandardOutput
+        CaptureStandardError = RunProcessArgs.defaultCaptureStandardError
         UseShellExecute = RunProcessArgs.defaultUseShellExecute
         WorkingDirectory = None
+        CreateNoWindow = RunProcessArgs.defaultCreateNoWindow
     }
 
     static member fromExecutableInDirectory executable dir args =
@@ -29,29 +35,37 @@ type RunProcessArgs = {
             Executable = exeFullPath
             Arguments = args
             CaptureStandardOutput = RunProcessArgs.defaultCaptureStandardOutput
+            CaptureStandardError = RunProcessArgs.defaultCaptureStandardError
             UseShellExecute = RunProcessArgs.defaultUseShellExecute
             WorkingDirectory = Some dir
+            CreateNoWindow = RunProcessArgs.defaultCreateNoWindow
         }
 
     static member fromGlobalExeAndWorkingDirectory executable workingDir = {
         Executable = executable
         Arguments = []
         CaptureStandardOutput = RunProcessArgs.defaultCaptureStandardOutput
+        CaptureStandardError = RunProcessArgs.defaultCaptureStandardError
         UseShellExecute = RunProcessArgs.defaultUseShellExecute
         WorkingDirectory = Some workingDir
+        CreateNoWindow = RunProcessArgs.defaultCreateNoWindow
     }
 
     static member withCaptureStandardOutput value args = { args with CaptureStandardOutput = value }
 
     static member withArguments arguments args = { args with Arguments = arguments }
 
+    static member withCreateNoWindow value args = { args with CreateNoWindow = value }
+
     member this.toProcessStartInfo() =
         ProcessStartInfo(
             this.Executable,
             this.Arguments,
             RedirectStandardOutput = this.CaptureStandardOutput,
+            RedirectStandardError = this.CaptureStandardError,
             UseShellExecute = this.UseShellExecute,
-            WorkingDirectory = (this.WorkingDirectory |> Option.toObj)
+            WorkingDirectory = (this.WorkingDirectory |> Option.toObj),
+            CreateNoWindow = this.CreateNoWindow
         )
 
 [<RequireQualifiedAccess>]
@@ -71,6 +85,20 @@ module RunProcess =
         let startInfo = args.toProcessStartInfo ()
         let p = new Process(StartInfo = startInfo)
         p.Start() |> expect true "Failed to start process"
+        p.WaitForExit()
+        p.ExitCode |> expect 0 $"Process exited with code {p.ExitCode}"
+
+    let startAndWaitWithOutput (args: RunProcessArgs) out err =
+
+        let handle f = Option.ofObj >> Option.iter f
+
+        let startInfo = args.toProcessStartInfo ()
+        let p = new Process(StartInfo = startInfo)
+        p.OutputDataReceived.Add(_.Data >> (handle out))
+        p.ErrorDataReceived.Add(_.Data >> (handle err))
+        p.Start() |> expect true "Failed to start process"
+        p.BeginErrorReadLine()
+        p.BeginOutputReadLine()
         p.WaitForExit()
         p.ExitCode |> expect 0 $"Process exited with code {p.ExitCode}"
 

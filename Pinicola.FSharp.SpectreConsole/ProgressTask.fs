@@ -24,3 +24,7 @@ module ProgressTask =
             t.StopTask()
             return result
         }
+
+    let stop (task: ProgressTask) =
+        task.IsIndeterminate <- false
+        task.StopTask()

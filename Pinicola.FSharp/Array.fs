@@ -24,6 +24,16 @@ module Array =
             | None, None -> failwith "This should never happen"
         )
 
+    let indexed array = array |> Array.mapi (fun i x -> i, x)
+
+    let iteriAsync f array =
+        let indexedArray = indexed array
+
+        task {
+            for i, x in indexedArray do
+                do! f i x
+        }
+
     let iteri' f seed (arr: 'a array) =
         arr
         |> Array.fold
