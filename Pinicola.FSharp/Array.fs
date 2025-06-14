@@ -1,10 +1,5 @@
 ﻿namespace Pinicola.FSharp
 
-type MergeResult<'left, 'right> =
-    | LeftOnly of 'left
-    | RightOnly of 'right
-    | Both of 'left * 'right
-
 [<RequireQualifiedAccess>]
 module Array =
 
@@ -43,3 +38,5 @@ module Array =
             )
             (0, seed)
         |> ignore
+
+    let mapToList f array = array |> Array.map f |> Array.toList

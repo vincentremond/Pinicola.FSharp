@@ -1,6 +1,7 @@
 ﻿namespace Pinicola.FSharp.IO
 
 open System.IO
+open Pinicola.FSharp
 
 [<RequireQualifiedAccess>]
 module Directory =
@@ -21,10 +22,10 @@ module Directory =
             Directory.CreateDirectory(path) |> ignore
 
     let getAllDirectories path =
-        Directory.GetDirectories(path) |> Array.map DirectoryInfo
+        Directory.GetDirectories(path) |> Array.mapToList DirectoryInfo
 
     let getDirectories pattern path =
-        Directory.GetDirectories(path, pattern) |> Array.map DirectoryInfo
+        Directory.GetDirectories(path, pattern) |> Array.mapToList DirectoryInfo
 
     let isSymlink (directory: DirectoryInfo) =
         directory.Attributes.HasFlag(FileAttributes.ReparsePoint)

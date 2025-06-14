@@ -70,3 +70,29 @@ module List =
             }
 
         loop list
+
+    let mergeBy fLeft fRight left right =
+        let leftMap = left |> List.map (fun x -> fLeft x, x) |> Map.ofList
+        let rightMap = right |> List.map (fun x -> fRight x, x) |> Map.ofList
+
+        let allKeys = Set.union (Map.keySet leftMap) (Map.keySet rightMap)
+
+        allKeys
+        |> Set.toList
+        |> List.map (fun key ->
+            match Map.tryFind key leftMap, Map.tryFind key rightMap with
+            | Some l, Some r -> Both(l, r)
+            | Some l, None -> LeftOnly l
+            | None, Some r -> RightOnly r
+            | None, None -> failwith "This should never happen"
+        )
+
+    let indexed list = list |> List.mapi (fun i x -> i, x)
+
+    let iteriAsync f list =
+        let indexedList = indexed list
+
+        task {
+            for i, x in indexedList do
+                do! f i x
+        }

@@ -8,24 +8,25 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Content Include="paket.template" />
+    <Compile Include="Tuple2.fs" />
+    <Compile Include="MergeResult.fs" />
+    <Compile Include="Map.fs" />
+    <Compile Include="List.fs" />
+    <Compile Include="Array.fs" />
+    <Compile Include="Seq.fs" />
+    <Compile Include="String.fs" />
+    <Compile Include="Option.fs" />
+    <Compile Include="ComputationExpressions.fs" />
+    <Compile Include="Try.fs" />
+    <Compile Include="Enum.fs" />
     <Compile Include="CsvHelper\Csv.fs" />
     <Compile Include="Fargo\FargoCmdLine.fs" />
     <Compile Include="FParsec\FParsecHelper.fs" />
     <Compile Include="IO\Directory.fs" />
     <Compile Include="IO\File.fs" />
     <Compile Include="IO\Path.fs" />
-    <Compile Include="List.fs" />
-    <Compile Include="Map.fs" />
     <Compile Include="RegularExpressions\Regex.fs" />
-    <Compile Include="Seq.fs" />
-    <Compile Include="String.fs" />
-    <Compile Include="Tuple2.fs" />
-    <Compile Include="Option.fs" />
-    <Compile Include="ComputationExpressions.fs" />
     <Compile Include="FireStarter\RunProcess.fs" />
-    <Compile Include="Try.fs" />
-    <Compile Include="Array.fs" />
-    <Compile Include="Enum.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
