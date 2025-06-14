@@ -325,7 +325,7 @@ NUGET
       System.Memory (>= 4.6) - restriction: >= net462
       System.Threading.Tasks.Extensions (>= 4.5.4) - restriction: >= net462
       System.ValueTuple (>= 4.5) - restriction: >= net462
-    NUnit.Analyzers (4.8.1)
+    NUnit.Analyzers (4.9.1)
     NUnit3TestAdapter (5.0)
       Microsoft.Testing.Extensions.VSTestBridge (>= 1.5.3) - restriction: || (>= net462) (>= netcoreapp3.1)
       Microsoft.Testing.Platform.MSBuild (>= 1.5.3) - restriction: || (>= net462) (>= netcoreapp3.1)
