@@ -6,6 +6,7 @@ open System.IO
 module File =
 
     let writeAllText path (text: string) = File.WriteAllText(path, text)
+    let writeAllText' (path: FileInfo) (text: string) = File.WriteAllText(path.FullName, text)
     let readAllText path = File.ReadAllText(path)
     let exists path = File.Exists(path)
     let delete = File.Delete
