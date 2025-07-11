@@ -30,3 +30,22 @@ module Map =
                 Map.add k (v1, v2) acc
             )
             Map.empty
+
+    let updateOrAdd key value update map =
+        let newValue =
+            match map |> Map.tryFind key with
+            | Some existingValue -> update existingValue value
+            | None -> value
+
+        Map.add key newValue map
+
+    let mergeAll merger maps =
+        let allKeys = maps |> Seq.collect Map.keys |> Seq.distinct |> Seq.toList
+
+        allKeys
+        |> List.fold
+            (fun acc key ->
+                let mergedValues = maps |> List.choose (Map.tryFind key) |> List.reduce merger
+                acc |> Map.add key mergedValues
+            )
+            Map.empty
