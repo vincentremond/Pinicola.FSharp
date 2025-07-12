@@ -31,6 +31,9 @@ module Map =
             )
             Map.empty
 
+    let toMutableDictionary (map: Map<'k, 'v>) =
+        System.Collections.Generic.Dictionary(map)
+
     let updateOrAdd key value update map =
         let newValue =
             match map |> Map.tryFind key with

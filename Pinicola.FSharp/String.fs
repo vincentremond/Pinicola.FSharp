@@ -54,3 +54,5 @@ module String =
     let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
 
     let concatC (separator: char) (strings: seq<string>) = String.Join(separator, strings)
+
+    let ofSeq (chars: char seq) : string = chars |> Seq.toArray |> String
