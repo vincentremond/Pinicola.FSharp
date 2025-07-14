@@ -55,8 +55,9 @@ module Directory =
             | SpecialDirectory.ProgramFiles -> Environment.SpecialFolder.ProgramFiles
             | SpecialDirectory.ProgramFilesX86 -> Environment.SpecialFolder.ProgramFilesX86
             | SpecialDirectory.CommonApplicationData -> Environment.SpecialFolder.CommonApplicationData
-            
+
         Environment.GetFolderPath(specialFolder) |> DirectoryInfo
 
     let getUserProfile () =
-        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) |> DirectoryInfo
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+        |> DirectoryInfo
