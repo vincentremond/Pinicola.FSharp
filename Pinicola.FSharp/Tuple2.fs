@@ -16,5 +16,5 @@ module Tuple2 =
         a
         b
     ]
-    
+
     let curry f (a, b) = f a b

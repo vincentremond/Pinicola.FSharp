@@ -8,6 +8,9 @@ module StringActivePatterns =
     let (|Contains|_|) comparisonType (sub: string) (s: string) =
         if s.Contains(sub, comparisonType) then Some() else None
 
+    let (|IsNullOrEmpty|_|) (s: string) =
+        if String.IsNullOrEmpty(s) then Some() else None
+
 [<RequireQualifiedAccess>]
 module String =
 
@@ -56,3 +59,5 @@ module String =
     let concatC (separator: char) (strings: seq<string>) = String.Join(separator, strings)
 
     let ofSeq (chars: char seq) : string = chars |> Seq.toArray |> String
+
+    let implode: string seq -> string = String.concat String.Empty
