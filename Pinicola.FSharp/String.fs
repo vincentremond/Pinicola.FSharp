@@ -8,6 +8,24 @@ module StringActivePatterns =
     let (|Contains|_|) comparisonType (sub: string) (s: string) =
         if s.Contains(sub, comparisonType) then Some() else None
 
+    let (|Eq|_|) comparisonType (s1: string) (s2: string) =
+        if String.Equals(s1, s2, comparisonType) then
+            Some()
+        else
+            None
+
+    let (|EqOCI|_|) (s1: string) (s2: string) =
+        if String.Equals(s1, s2, StringComparison.OrdinalIgnoreCase) then
+            Some()
+        else
+            None
+
+    let (|EqICCI|_|) (s1: string) (s2: string) =
+        if String.Equals(s1, s2, StringComparison.InvariantCultureIgnoreCase) then
+            Some()
+        else
+            None
+
     let (|IsNullOrEmpty|_|) (s: string) =
         if String.IsNullOrEmpty(s) then Some() else None
 
