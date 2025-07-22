@@ -28,6 +28,7 @@
     <Compile Include="IO\Path.fs" />
     <Compile Include="RegularExpressions\Regex.fs" />
     <Compile Include="FireStarter\RunProcess.fs" />
+    <Compile Include="Http\HttpUriBuilder.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
