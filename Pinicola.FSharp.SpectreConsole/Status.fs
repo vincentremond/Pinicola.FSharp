@@ -12,3 +12,9 @@ module Status =
 
     let startAsync (title: string) (func: StatusContext -> Task<'a>) (status: Status) : Task<'a> =
         status.StartAsync(title, func)
+
+[<RequireQualifiedAccess>]
+module SimpleStatus =
+
+    let run (title: string) (func: StatusContext -> 'a) : 'a =
+        AnsiConsole.Status().Start(title, func)
