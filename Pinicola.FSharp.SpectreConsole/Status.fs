@@ -16,5 +16,4 @@ module Status =
 [<RequireQualifiedAccess>]
 module SimpleStatus =
 
-    let run (title: string) (func: StatusContext -> 'a) : 'a =
-        AnsiConsole.Status().Start(title, func)
+    let run (title: string) (func: StatusContext -> 'a) : 'a = AnsiConsole.Status().Start(title, func)
