@@ -20,7 +20,7 @@ module StringActivePatterns =
         else
             None
 
-    let (|EqICCI|_|) (s1: string) (s2: string) =
+    let (|EqICIC|_|) (s1: string) (s2: string) =
         if String.Equals(s1, s2, StringComparison.InvariantCultureIgnoreCase) then
             Some()
         else
