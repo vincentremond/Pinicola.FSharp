@@ -52,3 +52,9 @@ module Map =
                 acc |> Map.add key mergedValues
             )
             Map.empty
+
+    let ofSeqWith f seq =
+        seq |> Seq.map (fun x -> (f x, x)) |> Map.ofSeq
+
+    let safeOfSeqWith f seq =
+        seq |> Seq.map (fun x -> (f x, x)) |> safeOfSeq
