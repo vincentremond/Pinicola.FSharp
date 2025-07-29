@@ -16,3 +16,6 @@ module Regex =
     let isMatch (i: string) (r: Regex) = r.IsMatch(i)
     let isMatch' (pattern: string) (i: string) = Regex.IsMatch(i, pattern)
     let escape (s: string) = Regex.Escape(s)
+
+    let replace (pattern: string) (replacement: string) (input: string) =
+        Regex.Replace(input, pattern, replacement)
