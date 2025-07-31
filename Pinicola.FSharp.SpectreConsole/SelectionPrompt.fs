@@ -13,4 +13,13 @@ module SelectionPrompt =
 
     let init () = SelectionPrompt<'a>()
 
+    let mk title choices =
+        init ()
+        |> withTitle title
+        |> addChoices choices
+
+    let prompt title choices =
+        mk title choices
+        |> AnsiConsole.prompt
+
     let useConverter (converter: 'a -> string) (prompt: SelectionPrompt<'a>) = prompt.UseConverter(converter)
