@@ -4,8 +4,8 @@ open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module SelectionPrompt =
-    let withTitle (title: string) (prompt: SelectionPrompt<'a>) =
-        prompt.Title <- title
+    let withTitle (title: StringType) (prompt: SelectionPrompt<'a>) =
+        prompt.Title <- title |> StringType.AsString
         prompt
 
     let addChoices choices (prompt: SelectionPrompt<'a>) =
@@ -14,12 +14,8 @@ module SelectionPrompt =
     let init () = SelectionPrompt<'a>()
 
     let mk title choices =
-        init ()
-        |> withTitle title
-        |> addChoices choices
+        init () |> withTitle title |> addChoices choices
 
-    let prompt title choices =
-        mk title choices
-        |> AnsiConsole.prompt
+    let prompt title choices = mk title choices |> AnsiConsole.prompt
 
     let useConverter (converter: 'a -> string) (prompt: SelectionPrompt<'a>) = prompt.UseConverter(converter)

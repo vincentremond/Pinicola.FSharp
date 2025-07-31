@@ -9,8 +9,9 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Content Include="paket.template" />
-    <Compile Include="AnsiConsole.fs" />
     <Compile Include="Markup.fs" />
+    <Compile Include="StringType.fs" />
+    <Compile Include="AnsiConsole.fs" />
     <Compile Include="Progress.fs" />
     <Compile Include="ProgressTask.fs" />
     <Compile Include="Rule.fs" />
