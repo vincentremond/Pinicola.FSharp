@@ -20,8 +20,10 @@ module List =
 
         loop [] list
 
-    let mapSnd f = List.map (fun (a, b) -> (a, f b))
     let mapFst f = List.map (fun (a, b) -> (f a, b))
+    let mapFst' f = List.map (fun (a, b) -> ((f a b), b))
+    let mapSnd f = List.map (fun (a, b) -> (a, f b))
+    let mapSnd' f = List.map (fun (a, b) -> (a, (f a b)))
 
     let chooseSnd f =
         List.choose (fun (a, b) ->
