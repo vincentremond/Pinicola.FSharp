@@ -15,15 +15,26 @@ module ProgressTask =
         result
 
     let runAsync<'t> (taskName: string) (fn: ProgressTask -> 't) (ctx: ProgressContext) : Task<'t> =
-        let t = ctx.AddTask(taskName, autoStart = true)
 
-        task {
+        Task.Run(fun () ->
+            let t = ctx.AddTask(taskName, autoStart = true)
+
             t.IsIndeterminate <- true
             let result = fn t
             t.IsIndeterminate <- false
             t.StopTask()
-            return result
-        }
+            result
+        )
+
+    let execAsync (taskName: string) (fn: ProgressTask -> unit) (ctx: ProgressContext) : Task =
+
+        Task.Run(fun () ->
+            let t = ctx.AddTask(taskName, autoStart = true)
+            t.IsIndeterminate <- true
+            fn t
+            t.IsIndeterminate <- false
+            t.StopTask()
+        )
 
     let stop (task: ProgressTask) =
         task.IsIndeterminate <- false
