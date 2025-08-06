@@ -1,5 +1,6 @@
 ﻿namespace Pinicola.FSharp.SpectreConsole
 
+open System.Threading.Tasks
 open Spectre.Console
 open Spectre.Console.Rendering
 
@@ -19,6 +20,7 @@ module LiveDisplay =
         l
 
     let start (f: LiveDisplayContext -> unit) (l: LiveDisplay) = l.Start(f)
+    let startAsync (f: LiveDisplayContext -> Task) (l: LiveDisplay) = l.StartAsync(f)
 
 [<RequireQualifiedAccess>]
 module LiveDisplayContext =
