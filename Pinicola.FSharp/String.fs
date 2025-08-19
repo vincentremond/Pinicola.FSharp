@@ -49,6 +49,7 @@ module String =
     let equalsInvariantCulture = equals StringComparison.InvariantCulture
 
     let split (separator: char) (s: string) = s.Split(separator) |> List.ofArray
+    let splitMax (separator: char) (max: int) (s: string) = s.Split(separator, max) |> List.ofArray
 
     let trim (s: string) = s.Trim()
     let trimChar (c: char) (s: string) = s.Trim(c)
