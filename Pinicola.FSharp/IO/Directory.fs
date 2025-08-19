@@ -30,7 +30,11 @@ module Directory =
         let currentDirectory = Directory.GetCurrentDirectory() |> DirectoryInfo
         findRelativeParent' currentDirectory
 
-    let ensureExists path =
+    let ensureExists (directory: DirectoryInfo) =
+        if not (directory.Exists) then
+            directory.Create()
+
+    let ensureExists' path =
         if not (Directory.Exists(path)) then
             Directory.CreateDirectory(path) |> ignore
 
