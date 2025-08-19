@@ -4,8 +4,8 @@ open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module SelectionPrompt =
-    let withTitle (title: StringType) (prompt: SelectionPrompt<'a>) =
-        prompt.Title <- title |> StringType.AsString
+    let withTitle (title: SpectreConsoleString) (prompt: SelectionPrompt<'a>) =
+        prompt.Title <- title |> SpectreConsoleString.asString
         prompt
 
     let addChoices choices (prompt: SelectionPrompt<'a>) =
