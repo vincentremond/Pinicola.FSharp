@@ -32,3 +32,7 @@ module Table =
 
     let updateCell (row: int) (column: int) (renderable: IRenderable) (table: Table) =
         table.UpdateCell(row, column, renderable) |> ignore
+
+    let withExpand (expand: bool) (table: Table) =
+        table.Expand <- expand
+        table
