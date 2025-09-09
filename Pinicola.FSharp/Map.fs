@@ -58,3 +58,8 @@ module Map =
 
     let safeOfSeqWith f seq =
         seq |> Seq.map (fun x -> (f x, x)) |> safeOfSeq
+
+    let iterTryFind f map =
+        map |> Map.toSeq |> Seq.tryFind (fun (k, v) -> f k v)
+
+    let iterTryFindValue f map = map |> iterTryFind f |> Option.map snd

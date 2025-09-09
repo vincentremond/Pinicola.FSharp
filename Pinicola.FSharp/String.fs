@@ -73,6 +73,8 @@ module String =
     let startsWithCurrentCultureIgnoreCase =
         startsWith StringComparison.CurrentCultureIgnoreCase
 
+    let startsWithICIC = startsWith StringComparison.InvariantCultureIgnoreCase
+
     let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
 
     let concatC (separator: char) (strings: seq<string>) = String.Join(separator, strings)
