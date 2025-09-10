@@ -11,6 +11,10 @@ module Table =
     let addColumns (columns: string list) (table: Table) =
         table.AddColumns(columns |> List.toArray)
 
+    let addColumnsCallback (columns: (string * (TableColumn -> unit)) list) (table: Table) : Table =
+        (table, columns)
+        ||> List.fold (fun table (column, configure) -> table.AddColumn(column, configure))
+
     let addRow (row: string list) (table: Table) = table.AddRow(row |> List.toArray)
 
     let addRows (rows: string list list) (table: Table) =

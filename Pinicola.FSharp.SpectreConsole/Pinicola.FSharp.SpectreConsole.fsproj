@@ -19,6 +19,7 @@
     <Compile Include="Status.fs" />
     <Compile Include="Style.fs" />
     <Compile Include="Table.fs" />
+    <Compile Include="TableColumn.fs" />
     <Compile Include="LiveDisplay.fs" />
     <Compile Include="Panel.fs" />
     <Compile Include="PanelHeader.fs" />

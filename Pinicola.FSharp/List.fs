@@ -101,6 +101,7 @@ module List =
 
     let tryRemoveExactlyOne f list =
         let matching, notMatching = list |> List.partition f
+
         match matching with
         | [] -> None, notMatching
         | [ x ] -> (Some x), notMatching
@@ -108,6 +109,7 @@ module List =
 
     let removeExactlyOne f list =
         let item, remaining = tryRemoveExactlyOne f list
+
         match item with
         | None -> failwith "No item matching the predicate was found"
         | Some x -> x, remaining
