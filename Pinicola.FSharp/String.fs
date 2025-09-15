@@ -29,6 +29,18 @@ module StringActivePatterns =
     let (|IsNullOrEmpty|_|) (s: string) =
         if String.IsNullOrEmpty(s) then Some() else None
 
+    let (|StartsWith|_|) comparisonType (value: string) (s: string) =
+        if s.StartsWith(value, comparisonType) then Some() else None
+
+    let (|StartsWithICIC|_|) (value: string) (s: string) =
+        if s.StartsWith(value, StringComparison.InvariantCultureIgnoreCase) then
+            Some()
+        else
+            None
+
+    let (|EndsWith|_|) comparisonType (value: string) (s: string) =
+        if s.EndsWith(value, comparisonType) then Some() else None
+
 [<RequireQualifiedAccess>]
 module String =
 
