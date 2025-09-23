@@ -13,7 +13,11 @@ module AnsiConsole =
     let markupInterpolated = AnsiConsole.MarkupInterpolated
     let markupLineInterpolated = AnsiConsole.MarkupLineInterpolated
     let write: IRenderable -> unit = AnsiConsole.Write
-    let writeLine = SpectreConsoleString.asString >> AnsiConsole.WriteLine
+
+    let writeLine s =
+        s |> SpectreConsoleString.asString |> Markup |> AnsiConsole.Write
+        AnsiConsole.WriteLine()
+
     let clear = AnsiConsole.Clear
     let live = AnsiConsole.Live
     let confirm = SpectreConsoleString.asString >> AnsiConsole.Confirm
