@@ -4,18 +4,22 @@ open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module SelectionPrompt =
+
+    let init<'a> () = SelectionPrompt<'a>()
+
     let withTitle (title: SpectreConsoleString) (prompt: SelectionPrompt<'a>) =
         prompt.Title <- title |> SpectreConsoleString.asString
         prompt
 
+    let withRawTitle (title: string) =
+        title |> SpectreConsoleString.fromString |> withTitle
+
     let addChoices choices (prompt: SelectionPrompt<'a>) =
         choices |> Array.ofSeq |> prompt.AddChoices
 
-    let init () = SelectionPrompt<'a>()
+    let withWrapAround wrapAround (prompt: SelectionPrompt<'a>) =
+        prompt.WrapAround <- wrapAround
+        prompt
 
-    let mk title choices =
-        init () |> withTitle title |> addChoices choices
-
-    let prompt title choices = mk title choices |> AnsiConsole.prompt
-
-    let useConverter (converter: 'a -> string) (prompt: SelectionPrompt<'a>) = prompt.UseConverter(converter)
+    let useConverter (converter: 'a -> SpectreConsoleString) (prompt: SelectionPrompt<'a>) =
+        prompt.UseConverter(converter >> SpectreConsoleString.asString)

@@ -6,7 +6,7 @@ open Spectre.Console.Rendering
 [<RequireQualifiedAccess>]
 module AnsiConsole =
     let prompt = AnsiConsole.Prompt
-    let ask = AnsiConsole.Ask
+    let ask<'a> = AnsiConsole.Ask<'a>
     let status = AnsiConsole.Status
     let markup = AnsiConsole.Markup
     let markupLine = AnsiConsole.MarkupLine
