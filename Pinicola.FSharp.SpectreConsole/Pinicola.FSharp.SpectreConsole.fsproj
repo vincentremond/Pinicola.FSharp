@@ -26,6 +26,7 @@
     <Compile Include="Padding.fs" />
     <Compile Include="TaskDescriptionColumn.fs" />
     <Compile Include="ProgressContext.fs" />
+    <Compile Include="FigletText.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
