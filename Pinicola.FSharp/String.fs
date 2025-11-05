@@ -9,7 +9,10 @@ module StringActivePatterns =
         if s.Contains(sub, comparisonType) then Some() else None
 
     let (|ContainsICIC|_|) (sub: string) (s: string) =
-        if s.Contains(sub, StringComparison.InvariantCultureIgnoreCase) then Some() else None
+        if s.Contains(sub, StringComparison.InvariantCultureIgnoreCase) then
+            Some()
+        else
+            None
 
     let (|Eq|_|) comparisonType (s1: string) (s2: string) =
         if String.Equals(s1, s2, comparisonType) then
@@ -47,18 +50,18 @@ module StringActivePatterns =
 [<RequireQualifiedAccess>]
 module String =
 
-    let private equals (comparison: StringComparison) (s1: string) (s2: string) = String.Equals(s1, s2, comparison)
+    let equals (comparison: StringComparison) (s1: string) (s2: string) = String.Equals(s1, s2, comparison)
 
-    let equalsOrdinalIgnoreCase = equals StringComparison.OrdinalIgnoreCase
+    let equalsOIC = equals StringComparison.OrdinalIgnoreCase
 
-    let equalsOrdinal = equals StringComparison.Ordinal
+    let equalsO = equals StringComparison.Ordinal
 
-    let equalsCurrentCultureIgnoreCase =
+    let equalsCCIC =
         equals StringComparison.CurrentCultureIgnoreCase
 
-    let equalsCurrentCulture = equals StringComparison.CurrentCulture
+    let equalsCC = equals StringComparison.CurrentCulture
 
-    let equalsInvariantCultureIgnoreCase =
+    let equalsICIC =
         equals StringComparison.InvariantCultureIgnoreCase
 
     let equalsInvariantCulture = equals StringComparison.InvariantCulture
@@ -83,17 +86,22 @@ module String =
 
     let splitWithOptions (separator: string) options (s: string) = s.Split(separator, options)
 
-    let private startsWith stringComparison (str: string) (value: string) = str.StartsWith(value, stringComparison)
+    let startsWith stringComparison (value: string) (str: string) = str.StartsWith(value, stringComparison)
 
     let startsWithCurrentCultureIgnoreCase =
         startsWith StringComparison.CurrentCultureIgnoreCase
 
     let startsWithICIC = startsWith StringComparison.InvariantCultureIgnoreCase
 
-    let private endsWith stringComparison (str: string) (value: string) = str.EndsWith(value, stringComparison)
+    let endsWith stringComparison (value: string) (str: string) = str.EndsWith(value, stringComparison)
+    let endsWithICIC = endsWith StringComparison.InvariantCultureIgnoreCase
 
     let concatC (separator: char) (strings: seq<string>) = String.Join(separator, strings)
 
     let ofSeq (chars: char seq) : string = chars |> Seq.toArray |> String
 
     let implode: string seq -> string = String.concat String.Empty
+
+    let contains stringComparison (sub: string) (s: string) = s.Contains(sub, stringComparison)
+
+    let containsICIC = contains StringComparison.InvariantCultureIgnoreCase
