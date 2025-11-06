@@ -4,6 +4,5 @@ open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module FigletText =
-    
-    let init s = FigletText(s)
 
+    let init s = FigletText(s)

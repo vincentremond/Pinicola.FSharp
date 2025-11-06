@@ -8,12 +8,18 @@ open CsvHelper
 [<RequireQualifiedAccess>]
 module Csv =
 
-    let writeRecordsToFileWithCulture<'T> (records: 'T seq) (culture: CultureInfo) (filePath: string) =
-        use writer =
-            new StreamWriter(filePath, (*append*) false, UTF8Encoding( (*encoderShouldEmitUTF8Identifier*) true))
+    let writeRecordsToFileWithCulture<'T> (culture: CultureInfo) (filePath: string) (records: 'T seq) =
+        using
+            (new StreamWriter(filePath, append = false, encoding = UTF8Encoding(encoderShouldEmitUTF8Identifier = true)))
+            (fun writer -> using (new CsvWriter(writer, culture)) _.WriteRecords(records))
 
-        use csv = new CsvWriter(writer, culture)
-        csv.WriteRecords(records)
+    let writeRecordsToFile<'T> =
+        writeRecordsToFileWithCulture<'T> CultureInfo.InvariantCulture
 
-    let rec writeRecordsToFile<'T> (records: 'T seq) (filePath: string) =
-        writeRecordsToFileWithCulture records CultureInfo.InvariantCulture filePath
+    let readRecordsFromFileWithCulture<'T> (culture: CultureInfo) (filePath: string) : 'T list =
+        using
+            (new StreamReader(filePath, UTF8Encoding(encoderShouldEmitUTF8Identifier = true)))
+            (fun streamReader -> using (new CsvReader(streamReader, culture)) (fun csvReader -> csvReader.GetRecords<'T>() |> Seq.toList))
+
+    let readRecordsFromFile<'T> (filePath: string) : 'T list =
+        readRecordsFromFileWithCulture<'T> CultureInfo.InvariantCulture filePath
