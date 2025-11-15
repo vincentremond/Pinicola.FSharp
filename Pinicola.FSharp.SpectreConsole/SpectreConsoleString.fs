@@ -18,8 +18,7 @@ type SpectreConsoleString =
         let str = Markup.escapeInterpolated f
         Markup str
 
-    static member inline fromString(s: string) : SpectreConsoleString =
-        Raw s
+    static member inline fromString(s: string) : SpectreConsoleString = Raw s
 
     static member build(parts: SpectreConsoleString list) : SpectreConsoleString =
         parts |> List.map SpectreConsoleString.asString |> String.concat "" |> Markup

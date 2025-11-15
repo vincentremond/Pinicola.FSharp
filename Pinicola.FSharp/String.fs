@@ -56,13 +56,11 @@ module String =
 
     let equalsO = equals StringComparison.Ordinal
 
-    let equalsCCIC =
-        equals StringComparison.CurrentCultureIgnoreCase
+    let equalsCCIC = equals StringComparison.CurrentCultureIgnoreCase
 
     let equalsCC = equals StringComparison.CurrentCulture
 
-    let equalsICIC =
-        equals StringComparison.InvariantCultureIgnoreCase
+    let equalsICIC = equals StringComparison.InvariantCultureIgnoreCase
 
     let equalsInvariantCulture = equals StringComparison.InvariantCulture
 

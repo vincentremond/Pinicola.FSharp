@@ -19,7 +19,11 @@ module Csv =
     let readRecordsFromFileWithCulture<'T> (culture: CultureInfo) (filePath: string) : 'T list =
         using
             (new StreamReader(filePath, UTF8Encoding(encoderShouldEmitUTF8Identifier = true)))
-            (fun streamReader -> using (new CsvReader(streamReader, culture)) (fun csvReader -> csvReader.GetRecords<'T>() |> Seq.toList))
+            (fun streamReader ->
+                using
+                    (new CsvReader(streamReader, culture))
+                    (fun csvReader -> csvReader.GetRecords<'T>() |> Seq.toList)
+            )
 
     let readRecordsFromFile<'T> (filePath: string) : 'T list =
         readRecordsFromFileWithCulture<'T> CultureInfo.InvariantCulture filePath
