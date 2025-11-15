@@ -7,10 +7,11 @@ source https://api.nuget.org/v3/index.json
 nuget CsvHelper
 nuget FSharp.Core
 nuget Fargo.CmdLine
+nuget LibGit2Sharp
 nuget Microsoft.SourceLink.GitHub
 nuget Spectre.Console
 nuget FParsec
-
+w
 group Tests
 
 storage: none
