@@ -1,5 +1,6 @@
 ﻿namespace Pinicola.FSharp.RegularExpressions
 
+open System
 open System.Text.RegularExpressions
 
 [<AutoOpen>]
@@ -19,5 +20,8 @@ module Regex =
 
     let replace (r: Regex) (replacement: string) (input: string) = r.Replace(input, replacement)
 
-    let replace' (pattern: string) (replacement: string) (input: string) =
+    let replacePattern (pattern: string) (replacement: string) (input: string) =
         Regex.Replace(input, pattern, replacement)
+
+    [<Obsolete("Use replacePattern instead", true)>]
+    let replace' = replacePattern
