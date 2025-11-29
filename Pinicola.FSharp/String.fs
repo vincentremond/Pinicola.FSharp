@@ -1,6 +1,8 @@
 ﻿namespace Pinicola.FSharp
 
 open System
+open System.Globalization
+open System.Text
 
 [<AutoOpen>]
 module StringActivePatterns =
@@ -103,3 +105,11 @@ module String =
     let contains stringComparison (sub: string) (s: string) = s.Contains(sub, stringComparison)
 
     let containsICIC = contains StringComparison.InvariantCultureIgnoreCase
+
+    let removeDiacritics (s: string) =
+
+        s
+        |> _.Normalize(NormalizationForm.FormD)
+        |> Seq.filter (fun c -> CharUnicodeInfo.GetUnicodeCategory(c) <> UnicodeCategory.NonSpacingMark)
+        |> ofSeq
+        |> _.Normalize(NormalizationForm.FormC)
