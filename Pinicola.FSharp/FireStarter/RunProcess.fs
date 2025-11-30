@@ -100,7 +100,10 @@ module RunProcess =
         p.BeginErrorReadLine()
         p.BeginOutputReadLine()
         p.WaitForExit()
-        p.ExitCode |> expect 0 $"Process exited with code {p.ExitCode}"
+
+        match p.ExitCode with
+        | 0 -> Ok()
+        | code -> Error $"Process exited with code {code}"
 
     let startAndForget = startProcess >> ignore
 
