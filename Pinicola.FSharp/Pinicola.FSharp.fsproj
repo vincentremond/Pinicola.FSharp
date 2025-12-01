@@ -29,6 +29,7 @@
     <Compile Include="RegularExpressions\Regex.fs" />
     <Compile Include="FireStarter\RunProcess.fs" />
     <Compile Include="Http\HttpUriBuilder.fs" />
+    <Compile Include="Where.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
