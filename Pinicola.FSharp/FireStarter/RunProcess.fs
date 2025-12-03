@@ -103,7 +103,7 @@ module RunProcess =
 
         match p.ExitCode with
         | 0 -> Ok()
-        | code -> Error $"Process exited with code {code}"
+        | code -> Error $"Process {args.Executable} exited with code {code}"
 
     let startAndForget = startProcess >> ignore
 
