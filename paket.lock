@@ -155,10 +155,10 @@ NUGET
       System.Security.AccessControl (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
       System.Security.Principal.Windows (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
     Mono.Posix.NETStandard (1.0) - restriction: >= netstandard2.0
-    MSBuild.StructuredLogger (2.3.71) - restriction: >= netstandard2.0
+    MSBuild.StructuredLogger (2.3.109) - restriction: >= netstandard2.0
       Microsoft.Build.Framework (>= 17.5) - restriction: >= netstandard2.0
       Microsoft.Build.Utilities.Core (>= 17.5) - restriction: >= netstandard2.0
-      System.Collections.Immutable (>= 8.0) - restriction: >= netstandard2.0
+      System.Collections.Immutable (>= 8.0) - restriction: && (< net8.0) (>= netstandard2.0)
       System.Memory (>= 4.6) - restriction: && (< net8.0) (>= netstandard2.0)
       System.Runtime.CompilerServices.Unsafe (>= 6.1) - restriction: && (< net8.0) (>= netstandard2.0)
     Newtonsoft.Json (13.0.4) - restriction: >= netstandard2.0
