@@ -88,8 +88,10 @@ module String =
 
     let startsWith stringComparison (value: string) (str: string) = str.StartsWith(value, stringComparison)
 
-    let startsWithCurrentCultureIgnoreCase =
-        startsWith StringComparison.CurrentCultureIgnoreCase
+    let startsWithCCIC = startsWith StringComparison.CurrentCultureIgnoreCase
+
+    [<Obsolete("Use startsWithCCIC", true)>]
+    let startsWithCurrentCultureIgnoreCase = startsWithCCIC
 
     let startsWithICIC = startsWith StringComparison.InvariantCultureIgnoreCase
 
