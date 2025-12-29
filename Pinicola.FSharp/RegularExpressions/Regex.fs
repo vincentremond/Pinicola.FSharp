@@ -15,6 +15,10 @@ module RegexPatterns =
 module Regex =
 
     let isMatch (i: string) (r: Regex) = r.IsMatch(i)
+
+    let isMatchPattern (pattern: string) (input: string) = Regex.IsMatch(input, pattern)
+
+    [<Obsolete("Use isMatchPattern instead", true)>]
     let isMatch' (pattern: string) (i: string) = Regex.IsMatch(i, pattern)
     let escape (s: string) = Regex.Escape(s)
 
