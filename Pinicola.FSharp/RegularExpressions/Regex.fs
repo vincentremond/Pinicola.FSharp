@@ -20,6 +20,7 @@ module Regex =
 
     [<Obsolete("Use isMatchPattern instead", true)>]
     let isMatch' (pattern: string) (i: string) = Regex.IsMatch(i, pattern)
+
     let escape (s: string) = Regex.Escape(s)
 
     let replace (r: Regex) (replacement: string) (input: string) = r.Replace(input, replacement)
