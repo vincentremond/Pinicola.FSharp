@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/.build/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="build.ps1" />
+    <File Path="paket.dependencies" />
+    <File Path="paket.lock" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Pinicola.Build.Run/Pinicola.Build.Run.fsproj" />
+  <Project Path="Pinicola.Build/Pinicola.Build.fsproj" Type="C#" />
+  <Project Path="Pinicola.FSharp.SpectreConsole/Pinicola.FSharp.SpectreConsole.fsproj" />
+  <Project Path="Pinicola.FSharp.Tests/Pinicola.FSharp.Tests.fsproj" />
+  <Project Path="Pinicola.FSharp/Pinicola.FSharp.fsproj" />
+</Solution>
